@@ -48,7 +48,8 @@ class MealsController < ApplicationController
 
     def meal_params
       params.require(:meal).permit(
-                              :name
+                              :name,
+                              food_ids: []
       )
     end
 
