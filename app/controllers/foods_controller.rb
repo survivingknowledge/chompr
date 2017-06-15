@@ -48,7 +48,19 @@ class FoodsController < ApplicationController
 
   def food_params
     params.require(:food).permit(
-      :name
+                            :name,
+                            :serving_type,
+                            :serving_size,
+                            :calories,
+                            :total_fat,
+                            :saturated_fat,
+                            :trans_fat,
+                            :cholesterol,
+                            :sodium,
+                            :total_carbohydrate,
+                            :dietary_fiber,
+                            :sugars,
+                            :protein
     )
   end
 end
