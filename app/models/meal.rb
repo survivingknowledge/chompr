@@ -7,6 +7,7 @@ class Meal < ApplicationRecord
     ignored = %w[id name serving_type serving_size created_at updated_at]
     totals = {}
     foods.each do |food|
+      # add in user eaten amount later, defaults to 1.0
       ratio = food.serving_ratio
 
       food.attributes.each_key do |key|
