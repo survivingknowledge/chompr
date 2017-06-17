@@ -10,13 +10,9 @@ class Meal < ApplicationRecord
       # add in user eaten amount later, defaults to 1.0
       ratio = food.serving_ratio
 
-      food.attributes.each_key do |key|
+      food.attributes.each do |key, value|
         if !ignored.include?(key)
-          if totals[key]
-            totals[key] += (food[key] * ratio)
-          else
-            totals[key] = food[key]
-          end
+          totals[key] ? totals[key] += (value * ratio) : totals[key] = value
         end
       end
     end
