@@ -1,0 +1,5 @@
+<ul>
+  <% @foods.each do |food| %>
+    <li><a href="<%= food_path(food) %>"><%= food.name %></a></li>
+  <% end %>
+</ul>

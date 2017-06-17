@@ -1,0 +1,10 @@
+<h1>Foods Show</h1>
+<table>
+  <% @food.attributes.each do |key, value| %>
+    <tr>
+      <td><%= key.split('_').map { |w| w.capitalize }.join(' ') %></td>
+      <td><%= value || 'n/a' %></td>
+    </tr>
+  <% end %>
+</table>
+<%= link_to '<< back to foods', foods_path %>
