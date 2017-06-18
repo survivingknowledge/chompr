@@ -1,5 +1,11 @@
 <ul>
   <% @foods.each do |food| %>
-    <li><a href="<%= food_path(food) %>"><%= food.name %></a></li>
+    <li>
+      <a href="<%= food_path(food) %>"><%= food.name %></a>
+      Cal: <%= food.calories %>
+      F: <%= food.total_fat || 'n/a' %>
+      C: <%= food.total_carbohydrate || 'n/a' %>
+      P: <%= food.protein || 'n/a'%>
+    </li>
   <% end %>
 </ul>

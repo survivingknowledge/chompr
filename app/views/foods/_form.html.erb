@@ -1,0 +1,56 @@
+<table>
+  <%= form_for(@food) do |f| %>
+    <tr>
+      <td><%= f.label :name %></td>
+      <td><%= f.text_field :name %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :calories %></td>
+      <td><%= f.text_field :calories %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :serving_size %></td>
+      <td><%= f.text_field :serving_size %><%= @food.serving_type %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :total_fat %></td>
+      <td><%= f.text_field :total_fat %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :saturated_fat %></td>
+      <td><%= f.text_field :saturated_fat %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :trans_fat %></td>
+      <td><%= f.text_field :trans_fat %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :cholesterol %></td>
+      <td><%= f.text_field :cholesterol %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :sodium %></td>
+      <td><%= f.text_field :sodium %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :total_carbohydrate %></td>
+      <td><%= f.text_field :total_carbohydrate %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :dietary_fiber %></td>
+      <td><%= f.text_field :dietary_fiber %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :sugars %></td>
+      <td><%= f.text_field :sugars %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :protein %></td>
+      <td><%= f.text_field :protein %></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><%= f.submit %></td>
+    </tr>
+  <% end %>
+</table>
