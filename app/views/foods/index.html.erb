@@ -7,6 +7,9 @@
       F: <%= food.total_fat || 'n/a' %>
       C: <%= food.total_carbohydrate || 'n/a' %>
       P: <%= food.protein || 'n/a'%>
+      <%= form_tag "meals/add/#{food.id}", method: :post do %>
+        <%= submit_tag "Add to Meal" %>
+      <% end %>
     </li>
   <% end %>
 </ul>
