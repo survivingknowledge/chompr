@@ -12,7 +12,7 @@ class Meal < ApplicationRecord
 
       food.attributes.each do |key, value|
         if !ignored.include?(key)
-          totals[key] ? totals[key] += (value * ratio) : totals[key] = value
+          totals[key] ? totals[key] += (value.to_f * ratio) : totals[key] = value
         end
       end
     end
