@@ -4,7 +4,7 @@ class Food < ApplicationRecord
 
   #serving_amt (amt eaten) defaults to same serving_size if no input given
   def serving_ratio(serving_amt = self.serving_size)
-    ratio = 0.0
+    ratio = 1.0
     #have to transform to float to maintain decimal precision
     if self.serving_size && serving_amt && self.serving_size > 0 && serving_amt > 0
         ratio = serving_amt/self.serving_size.to_f

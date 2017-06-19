@@ -8,20 +8,11 @@ class MealsController < ApplicationController
     end
 
     def new
-      @totals = {}
-      ignored = %w[id name serving_type serving_size created_at updated_at]
-
       @current_meal = session[:current_meal].collect do |food_id|
         food = Food.find_by_id(food_id)
-
-        food.attributes.each do |key, value|
-          if !ignored.include?(key)
-            @totals[key] ? @totals[key] += (value.to_f) : @totals[key] = value
-          end
-        end
-        #make sure to return food
-        food
       end
+      @totals = Meal.totals(@current_meal)
+      
 
     end
 
