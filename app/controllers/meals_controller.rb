@@ -8,11 +8,12 @@ class MealsController < ApplicationController
     end
 
     def new
+      @meal = Meal.new
       @current_meal = session[:current_meal].collect do |food_id|
         food = Food.find_by_id(food_id)
       end
       @totals = Meal.totals(@current_meal)
-      
+
 
     end
 

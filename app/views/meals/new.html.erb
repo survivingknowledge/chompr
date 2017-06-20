@@ -1,25 +1,25 @@
 <h1>Create New Meal</h1>
 <%= link_to 'Add Food', foods_path %>
-<table>
-  <th>name</th>
-  <th>calories</th>
-  <th>fat</th>
-  <th>carbs</th>
-  <th>protein</th>
-  <% @current_meal.each do |food| %>
+  <table>
+    <th>name</th>
+    <th>calories</th>
+    <th>fat</th>
+    <th>carbs</th>
+    <th>protein</th>
+    <% @current_meal.each do |food| %>
+      <tr>
+        <td><%= food.try(:name) %></td>
+        <td><%= food.try(:calories) %></td>
+        <td><%= food.try(:total_fat) %></td>
+        <td><%= food.try(:total_carbohydrate) %></td>
+        <td><%= food.try(:protein) %></td>
+      </tr>
+    <% end %>
     <tr>
-      <td><%= food.try(:name) %></td>
-      <td><%= food.try(:calories) %></td>
-      <td><%= food.try(:total_fat) %></td>
-      <td><%= food.try(:total_carbohydrate) %></td>
-      <td><%= food.try(:protein) %></td>
+      <td>Totals:</td>
+      <td><%= @totals["calories"] %></td>
+      <td><%= @totals["total_fat"] %></td>
+      <td><%= @totals["total_carbohydrate"] %></td>
+      <td><%= @totals["protein"] %></td>
     </tr>
-  <% end %>
-  <tr>
-    <td>Totals:</td>
-    <td><%= @totals["calories"] %></td>
-    <td><%= @totals["total_fat"] %></td>
-    <td><%= @totals["total_carbohydrate"] %></td>
-    <td><%= @totals["protein"] %></td>
-  </tr>
-</table>
+  </table>
