@@ -11,6 +11,9 @@ class MealsController < ApplicationController
       @meal = Meal.new
       @current_meal = session[:current_meal].collect do |food_id|
         food = Food.find_by_id(food_id)
+        @meal.foods.build({id: food.id})
+        food
+
       end
       @totals = Meal.totals(@current_meal)
 
@@ -62,7 +65,7 @@ class MealsController < ApplicationController
     def meal_params
       params.require(:meal).permit(
                               :name,
-                              food_ids: []
+                              foods_attributes: [:id]
       )
     end
 
