@@ -11,13 +11,10 @@ class MealsController < ApplicationController
       @meal = Meal.new
       @current_meal = session[:current_meal].collect do |food_id|
         food = Food.find_by_id(food_id)
-        @meal.foods.build({id: food.id})
+        @meal.foods.build({id: food.id}) if food
         food
-
       end
       @totals = Meal.totals(@current_meal)
-
-
     end
 
     def create
@@ -38,7 +35,6 @@ class MealsController < ApplicationController
     end
 
     def update
-      binding.pry
       if @meal.update(meal_params)
         redirect_to @meal, notice: 'Meal successfully updated!'
       else

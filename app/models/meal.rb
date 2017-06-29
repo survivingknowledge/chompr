@@ -17,9 +17,7 @@ class Meal < ApplicationRecord
         food = Food.find_by_id(f[1]['id'].to_i)
         food.id if food
       end
-
       self.food_ids = food_array unless food_array.empty?
-      binding.pry
   end
 
   def self.totals(collection)
