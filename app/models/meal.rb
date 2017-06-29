@@ -3,12 +3,17 @@ class Meal < ApplicationRecord
   has_many :foods, through: :foods_meals
 
   def foods_attributes=(foods_attributes)
-    foods_attributes.each do |food|
+#4.3.1.4 collection=objects
+#
+# The collection= method makes the collection contain only the supplied objects,
+# by adding and deleting as appropriate.
+# 4.3.1.6 collection_singular_ids=ids
+# so in this case m.food_ids=[array of foods]
+#
+# The collection_singular_ids= method makes the collection contain only the objects identified by the supplied primary key values, by adding and deleting as appropriate.
+      #inside foods_attributes
       # ["0", {"id"=>"3"}]
-      id = food[1]["id"].to_i
-      food = Food.find_by_id(id)
-      self.foods << food if food
-    end
+      self.food_ids = foods_attributes.collect { |f| f[1]['id'].to_i }
   end
 
   def self.totals(collection)
