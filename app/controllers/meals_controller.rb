@@ -23,6 +23,7 @@ class MealsController < ApplicationController
     def create
       @meal = Meal.new(meal_params)
       if @meal.save
+        session[:current_meal].clear
         redirect_to @meal, notice: 'Meal successfully created!'
       else
         render :new
