@@ -34,9 +34,11 @@ class MealsController < ApplicationController
     end
 
     def edit
+      @meal.foods.build if @meal
     end
 
     def update
+      binding.pry
       if @meal.update(meal_params)
         redirect_to @meal, notice: 'Meal successfully updated!'
       else

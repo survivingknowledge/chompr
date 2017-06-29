@@ -1,0 +1,6 @@
+<%= form_for @meal do |f| %>
+  <%= f.fields_for(:foods, :include_id => false) do |builder| %>
+    <%= builder.text_field :id %>
+  <% end %>
+  <%= f.submit %>
+<% end %>

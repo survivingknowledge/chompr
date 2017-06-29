@@ -13,7 +13,13 @@ class Meal < ApplicationRecord
 # The collection_singular_ids= method makes the collection contain only the objects identified by the supplied primary key values, by adding and deleting as appropriate.
       #inside foods_attributes
       # ["0", {"id"=>"3"}]
-      self.food_ids = foods_attributes.collect { |f| f[1]['id'].to_i }
+      food_array = foods_attributes.collect do |f|
+        food = Food.find_by_id(f[1]['id'].to_i)
+        food.id if food
+      end
+
+      self.food_ids = food_array unless food_array.empty?
+      binding.pry
   end
 
   def self.totals(collection)
