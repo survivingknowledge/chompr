@@ -9,11 +9,15 @@ class MealsController < ApplicationController
 
     def new
       @meal = Meal.new
-      @current_meal = session[:current_meal].collect do |food_id|
-        food = Food.find_by_id(food_id)
-        @meal.foods.build({id: food.id}) if food
-        food
-      end
+      # git rid of n+1 query
+      # @current_meal = session[:current_meal].collect do |food_id|
+      #   food = Food.find_by_id(food_id)
+      #   @meal.foods.build({id: food.id}) if food
+      #   food
+      # end
+      
+      #query is now Select * from foods where food.id IN (ids)
+      @current_meal = Food.find(session[:current_meal])
       @totals = Meal.totals(@current_meal)
     end
 
